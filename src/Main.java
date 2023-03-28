@@ -30,6 +30,8 @@ public class Main {
                 StatusTask.IN_PROGRESS));
         manager.updateEpicTask(new EpicTask(4, "Эпик задача 3 new", "Организация детского праздника"));
 
+        //manager.removeAllTasks();
+
 
         manager.updateSubTask(new SubTask(8, "Суб задача2 new", "Купить продукты",
                 StatusTask.DONE));

@@ -94,6 +94,12 @@ public class Manager {
         }
     }
 
+    public void removeAllTasks() {
+        getSimpleTasksMap().clear();
+        getSubTasksMap().clear();
+        getEpicTasksMap().clear();
+    }
+
     public void getTask(Integer id) {
         try {
             if (getSimpleTasksMap().get(id) != null) {
