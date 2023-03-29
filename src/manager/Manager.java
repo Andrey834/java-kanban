@@ -14,27 +14,30 @@ public class Manager {
     private Integer counterId = 1;
 
     public void saveSimpleTask(SimpleTask simpleTask) {
-        simpleTask.setId(getCounterId());
+        Integer id = getCounterId();
+        simpleTask.setId(id);
         simpleTask.setStatus(StatusTask.NEW);
-        simpleTasksMap.put(getCounterId(), simpleTask);
-        setCounterId(getCounterId() + 1);
+        getSimpleTasksMap().put(id, simpleTask);
+        setCounterId(id + 1);
     }
 
     public void saveEpicTask(EpicTask epicTask) {
-        epicTask.setId(getCounterId());
+        Integer id = getCounterId();
+        epicTask.setId(id);
         ArrayList<Integer> subTaskList = new ArrayList<>();
         epicTask.setSubTaskList(subTaskList);
         epicTask.setStatus(StatusTask.NEW);
-        getEpicTasksMap().put(getCounterId(), epicTask);
-        setCounterId(getCounterId() + 1);
+        getEpicTasksMap().put(id, epicTask);
+        setCounterId(id + 1);
     }
 
     public void saveSubTask(SubTask subTask) {
-        subTask.setId(getCounterId());
+        Integer id = getCounterId();
+        subTask.setId(id);
         subTask.setStatus(StatusTask.NEW);
-        getSubTasksMap().put(getCounterId(), subTask);
-        getEpicTasksMap().get(subTask.getOwnEpic()).getSubTaskList().add(getCounterId());
-        setCounterId(getCounterId() + 1);
+        getSubTasksMap().put(id, subTask);
+        getEpicTasksMap().get(subTask.getOwnEpic()).getSubTaskList().add(id);
+        setCounterId(id + 1);
     }
 
     public void updateSimpleTask(SimpleTask simpleTask) {

@@ -74,6 +74,6 @@ public class SimpleTask{
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
-                "}\n";
+                "}";
     }
 }
