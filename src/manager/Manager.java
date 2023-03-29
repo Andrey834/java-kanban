@@ -11,33 +11,33 @@ public class Manager {
     private HashMap<Integer, SimpleTask> simpleTasksMap = new HashMap<>();
     private HashMap<Integer, SubTask> subTasksMap = new HashMap<>();
     private HashMap<Integer, EpicTask> epicTasksMap = new HashMap<>();
-    private Integer counterId = 1;
+    private Integer counterId = 0;
 
     public void saveSimpleTask(SimpleTask simpleTask) {
+        setCounterId(getCounterId() + 1);
         Integer id = getCounterId();
         simpleTask.setId(id);
         simpleTask.setStatus(StatusTask.NEW);
         getSimpleTasksMap().put(id, simpleTask);
-        setCounterId(id + 1);
     }
 
     public void saveEpicTask(EpicTask epicTask) {
+        setCounterId(getCounterId() + 1);
         Integer id = getCounterId();
         epicTask.setId(id);
         ArrayList<Integer> subTaskList = new ArrayList<>();
         epicTask.setSubTaskList(subTaskList);
         epicTask.setStatus(StatusTask.NEW);
         getEpicTasksMap().put(id, epicTask);
-        setCounterId(id + 1);
     }
 
     public void saveSubTask(SubTask subTask) {
+        setCounterId(getCounterId() + 1);
         Integer id = getCounterId();
         subTask.setId(id);
         subTask.setStatus(StatusTask.NEW);
         getSubTasksMap().put(id, subTask);
         getEpicTasksMap().get(subTask.getOwnEpic()).getSubTaskList().add(id);
-        setCounterId(id + 1);
     }
 
     public void updateSimpleTask(SimpleTask simpleTask) {
@@ -111,9 +111,11 @@ public class Manager {
                 System.out.println(getEpicTasksMap().get(id));
             } else if (getSubTasksMap().get(id) != null) {
                 System.out.println(getSubTasksMap().get(id));
+            } else {
+                System.out.println("Задача не найдена");
             }
         } catch (Exception exception) {
-            System.out.println("Задача не найдена");
+            System.out.println("Ошибка");
         }
     }
 
@@ -143,23 +145,11 @@ public class Manager {
         return simpleTasksMap;
     }
 
-    public void setSimpleTasksMap(HashMap<Integer, SimpleTask> simpleTasksMap) {
-        this.simpleTasksMap = simpleTasksMap;
-    }
-
     public HashMap<Integer, SubTask> getSubTasksMap() {
         return subTasksMap;
     }
 
-    public void setSubTasksMap(HashMap<Integer, SubTask> subTasksMap) {
-        this.subTasksMap = subTasksMap;
-    }
-
     public HashMap<Integer, EpicTask> getEpicTasksMap() {
         return epicTasksMap;
-    }
-
-    public void setEpicTasksMap(HashMap<Integer, EpicTask> epicTasksMap) {
-        this.epicTasksMap = epicTasksMap;
     }
 }

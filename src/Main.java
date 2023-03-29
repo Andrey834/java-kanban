@@ -1,8 +1,5 @@
 import manager.Manager;
-import tasks.EpicTask;
-import tasks.SimpleTask;
-import tasks.StatusTask;
-import tasks.SubTask;
+import tasks.*;
 
 public class Main {
 
@@ -12,9 +9,10 @@ public class Main {
         manager.saveSimpleTask(new SimpleTask("Простая задача", "Выкинуть мусор"));
         manager.saveSimpleTask(new SimpleTask("Простая задача 2", "Выкинуть мусор 2"));
 
+        manager.getTask(1);
+
         manager.saveEpicTask(new EpicTask("Эпик задача", "Поездка на дачу"));
         manager.saveEpicTask(new EpicTask("Эпик задача 2", "Организация праздника"));
-
 
         manager.saveSubTask(new SubTask("Суб задача", "Заправить авто", 3));
         manager.saveSubTask(new SubTask("Суб задача", "Собрать вещи", 3));
@@ -31,13 +29,14 @@ public class Main {
         manager.getTask(5);
         manager.getTask(6);
 
+        manager.removeTask(1);
+
+        manager.getTask(1);
 
         manager.updateSimpleTask(new SimpleTask(2, "Простая задача 2", "Не выкидывать мусор",
                 StatusTask.IN_PROGRESS));
+
         manager.updateEpicTask(new EpicTask(4, "Эпик задача 3 new", "Организация детского праздника"));
-
-
-
 
         manager.updateSubTask(new SubTask(8, "Суб задача2 new", "Купить продукты",
                 StatusTask.DONE));
@@ -48,11 +47,8 @@ public class Main {
 
         manager.getSubListFromEpic(4);
 
+        manager.removeAllTasks();
 
-
-
-
-
-
+        manager.getSubListFromEpic(4);
     }
 }

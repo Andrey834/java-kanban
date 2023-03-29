@@ -13,21 +13,9 @@ public class SimpleTask{
         this.status = status;
     }
 
-    public SimpleTask(String title, String description, StatusTask status) {
-        this.title = title;
-        this.description = description;
-        this.status = status;
-    }
-
     public SimpleTask(String title, String description) {
         this.title = title;
         this.description = description;
-    }
-
-    public SimpleTask(Integer id, String title, StatusTask status) {
-        this.id = id;
-        this.title = title;
-        this.status = status;
     }
 
     public SimpleTask(Integer id, String title, String description) {

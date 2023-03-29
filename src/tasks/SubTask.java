@@ -3,15 +3,6 @@ package tasks;
 public class SubTask extends SimpleTask {
     private Integer ownEpic;
 
-    public SubTask(Integer id, String title, String description, StatusTask status, Integer ownEpic) {
-        super(id, title, description, status);
-        this.ownEpic = ownEpic;
-    }
-
-    public SubTask(String title, String description) {
-        super(title, description);
-    }
-
     public SubTask(Integer id, String title, String description, StatusTask status) {
         super(id, title, description, status);
     }
