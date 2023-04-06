@@ -2,7 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 
-public class EpicTask extends SimpleTask{
+public class EpicTask extends Task {
     private ArrayList<Integer> subTaskList;
 
     public EpicTask(Integer id, String title, String description) {

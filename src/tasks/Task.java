@@ -1,24 +1,24 @@
 package tasks;
 
-public class SimpleTask{
+public class Task {
     private Integer id;
-    private String title;
-    private String description;
+    private final String title;
+    private final String description;
     private StatusTask status;
 
-    public SimpleTask(Integer id, String title, String description, StatusTask status) {
+    public Task(Integer id, String title, String description, StatusTask status) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
     }
 
-    public SimpleTask(String title, String description) {
+    public Task(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public SimpleTask(Integer id, String title, String description) {
+    public Task(Integer id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -36,16 +36,8 @@ public class SimpleTask{
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public StatusTask getStatus() {
