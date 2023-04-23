@@ -2,6 +2,8 @@ import manager.Managers;
 import manager.TaskManager;
 import tasks.*;
 
+import java.util.Random;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -43,19 +45,19 @@ public class Main {
             System.out.println(task);
         }
 
-        taskManager.removeTask(1);
+        taskManager.removeTask(1); //Удаляем эпик №1 + его СубЗадачи
 
         System.out.println("----------------------");
         for (Task task : taskManager.getHistory()) {
             System.out.println(task);
         }
 
-        taskManager.removeAllTasks();
+        taskManager.removeAllTasks(); //Удаляем все задачи + историю просмотра
 
         System.out.println("----------------------");
         for (Task task : taskManager.getHistory()) {
             System.out.println(task);
         }
-        System.out.println("ПУСТО");
+        System.out.println("ПУСТО!");
     }
 }
