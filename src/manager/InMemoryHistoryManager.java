@@ -73,14 +73,28 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     private static class Node<Task> {
-        public Task task;
         public Node<Task> next;
+        public Task task;
         public Node<Task> previous;
 
         public Node(Node<Task> previous, Task task, Node<Task> next) {
-            this.task = task;
             this.next = next;
+            this.task = task;
             this.previous = previous;
+
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Node<?> node = (Node<?>) o;
+            return Objects.equals(next, node.next) && Objects.equals(task, node.task) && Objects.equals(previous, node.previous);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(next, task, previous);
         }
     }
 }
