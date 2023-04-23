@@ -98,6 +98,7 @@ public class InMemoryTaskManager implements TaskManager {
         } else if (getEpicMap().get(id) != null) {
             for (Integer subId : getEpicMap().get(id).getSubTaskList()) {
                 getSubMap().remove(subId);
+                historyManager.remove(subId);
             }
             getEpicMap().remove(id);
         } else if (getSubMap().get(id) != null) {
@@ -106,6 +107,7 @@ public class InMemoryTaskManager implements TaskManager {
         } else {
             System.out.println("Ошибка");
         }
+        historyManager.remove(id);
     }
 
     @Override
@@ -113,6 +115,7 @@ public class InMemoryTaskManager implements TaskManager {
         getTaskMap().clear();
         getSubMap().clear();
         getEpicMap().clear();
+        historyManager.clear();
     }
 
     @Override
