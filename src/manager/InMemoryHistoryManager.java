@@ -1,6 +1,7 @@
 package manager;
 
 import tasks.Task;
+
 import java.util.*;
 
 public class InMemoryHistoryManager implements HistoryManager {
@@ -10,10 +11,8 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void add(Task task) {
-        if (task != null) {
-            remove(task.getId());
-            linkLast(task);
-        }
+        remove(task.getId());
+        linkLast(task);
     }
 
     @Override
