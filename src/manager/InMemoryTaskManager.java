@@ -119,34 +119,26 @@ public class InMemoryTaskManager implements TaskManager {
     }
 
     @Override
-    public void getTask(Integer id) {
+    public Task getTask(Integer id) {
         if (getTaskMap().get(id) != null) {
-            System.out.println(getTaskMap().get(id));
             historyManager.add(getTaskMap().get(id));
+            return getTaskMap().get(id);
         } else if (getEpicMap().get(id) != null) {
-            System.out.println(getEpicMap().get(id));
             historyManager.add(getEpicMap().get(id));
+            return getEpicMap().get(id);
         } else if (getSubMap().get(id) != null) {
-            System.out.println(getSubMap().get(id));
             historyManager.add(getSubMap().get(id));
-        } else {
-            System.out.println("Задача не найдена");
+            return getSubMap().get(id);
         }
+        return null;
     }
 
     @Override
-    public void getSubListFromEpic(Integer id) {
+    public ArrayList<Integer> getSubListFromEpic(Integer id) {
         if (getEpicMap().get(id) != null) {
-            if (getEpicMap().get(id).getSubTaskList().isEmpty()) {
-                System.out.println("Отсутсвуют Суб-Задачи");
-            } else {
-                for (Integer subTask : getEpicMap().get(id).getSubTaskList()) {
-                    System.out.println(getSubMap().get(subTask));
-                }
-            }
-        } else {
-            System.out.println("Задача не найдена");
+            return getEpicMap().get(id).getSubTaskList();
         }
+        return null;
     }
 
     public List<Task> getHistory() {
