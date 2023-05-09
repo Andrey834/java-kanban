@@ -1,34 +1,41 @@
 package tasks;
 
 public class Task {
-    private Integer id;
-    private final String title;
-    private final String description;
+    private int id;
+    private String title;
+    private String description;
     private StatusTask status;
-
-    public Task(Integer id, String title, String description, StatusTask status) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.status = status;
-    }
 
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
     }
 
-    public Task(Integer id, String title, String description) {
+    public Task(int id, StatusTask status) {
+        this.id = id;
+        this.status = status;
+    }
+
+    public Task(String title, String description, StatusTask status) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Task(int id, String title, String description, StatusTask status) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.status = status;
     }
 
-    public Integer getId() {
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -36,8 +43,16 @@ public class Task {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public StatusTask getStatus() {
@@ -50,10 +65,10 @@ public class Task {
 
     @Override
     public String toString() {
-        return "{TASK id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                "}";
+        return id + "," +
+                "TASK" + "," +
+                title + "," +
+                status + "," +
+                description + ",";
     }
 }
