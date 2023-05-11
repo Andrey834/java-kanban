@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileBackedTasksManager extends InMemoryTaskManager implements TaskManager {
+public class FileBackedTasksManager extends InMemoryTaskManager {
     private File file;
 
     public FileBackedTasksManager(File file) {
@@ -54,13 +54,11 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                                 Task task = fromString(taskLine.get(i));
                                 getTaskMap().put(task.getId(), task);
                                 setCounterId(getCounterId() + 1);
-                                //continue;
                             }
                             case EPICTASK -> {
                                 EpicTask epicTask = (EpicTask) fromString(taskLine.get(i));
                                 getEpicMap().put(epicTask.getId(), epicTask);
                                 setCounterId(getCounterId() + 1);
-                                //continue;
                             }
                             case SUBTASK -> {
                                 SubTask subTask = (SubTask) fromString(taskLine.get(i));
@@ -170,25 +168,5 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
     public void removeAllTasks() {
         super.removeAllTasks();
         save();
-    }
-
-    @Override
-    public Task getTask(Integer id) {
-        return super.getTask(id);
-    }
-
-    @Override
-    public List<Integer> getSubListFromEpic(Integer id) {
-        return super.getSubListFromEpic(id);
-    }
-
-    @Override
-    public List<Task> getHistory() {
-        return super.getHistory();
-    }
-
-    @Override
-    public List<Task> getListAllTasks() {
-        return super.getListAllTasks();
     }
 }

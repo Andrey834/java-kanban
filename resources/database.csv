@@ -14,5 +14,15 @@ id,type,name,status,description,epic
 13,SUBTASK,subTask1,NEW,descSub,2
 14,SUBTASK,subTask2,NEW,descSub,2
 15,SUBTASK,subTask3,NEW,descSub,2
+16,TASK,lastTask,NEW,descLast,
+17,EPICTASK,epicTask,NEW,descEpic2,
+18,SUBTASK,subTask1,NEW,descSub,2
+19,SUBTASK,subTask2,NEW,descSub,2
+20,SUBTASK,subTask3,NEW,descSub,2
+21,TASK,lastTask,NEW,descLast,
+22,EPICTASK,epicTask,NEW,descEpic2,
+23,SUBTASK,subTask1,NEW,descSub,2
+24,SUBTASK,subTask2,NEW,descSub,2
+25,SUBTASK,subTask3,NEW,descSub,2
 
 2,3,1,4,
