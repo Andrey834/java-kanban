@@ -127,7 +127,7 @@ public class InMemoryTaskManager implements TaskManager {
             epicMap.get(subMap.get(id).getOwnEpic()).getIdSubList().remove(id);
             subMap.remove(id);
         }
-        Managers.getDefaultHistory().remove(id);
+        Manager.getDefaultHistory().remove(id);
     }
 
     @Override
@@ -135,19 +135,19 @@ public class InMemoryTaskManager implements TaskManager {
         taskMap.clear();
         subMap.clear();
         epicMap.clear();
-        Managers.getDefaultHistory().clear();
+        Manager.getDefaultHistory().clear();
     }
 
     @Override
     public Task getTask(Integer id) {
         if (taskMap.containsKey(id)) {
-            Managers.getDefaultHistory().add(taskMap.get(id));
+            Manager.getDefaultHistory().add(taskMap.get(id));
             return taskMap.get(id);
         } else if (epicMap.containsKey(id)) {
-            Managers.getDefaultHistory().add(epicMap.get(id));
+            Manager.getDefaultHistory().add(epicMap.get(id));
             return epicMap.get(id);
         } else if (subMap.containsKey(id)) {
-            Managers.getDefaultHistory().add(subMap.get(id));
+            Manager.getDefaultHistory().add(subMap.get(id));
             return subMap.get(id);
         }
         return null;
@@ -160,7 +160,7 @@ public class InMemoryTaskManager implements TaskManager {
 
     @Override
     public List<Task> getHistory() {
-        return Managers.getDefaultHistory().getHistory();
+        return Manager.getDefaultHistory().getHistory();
     }
 
     @Override
@@ -187,7 +187,6 @@ public class InMemoryTaskManager implements TaskManager {
         return subMap;
     }
 
-    //delete f
     public static int getCounterId() {
         return counterId;
     }

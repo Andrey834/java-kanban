@@ -84,14 +84,6 @@ public class InMemoryHistoryManager implements HistoryManager{
         }
     }
 
-    public static HashMap<Integer, Node<Task>> getHistoryMap() {
-        return historyMap;
-    }
-
-    public static void setHistoryMap(HashMap<Integer, Node<Task>> historyMap) {
-        InMemoryHistoryManager.historyMap = historyMap;
-    }
-
     protected static class Node<Task> {
         public Node<Task> next;
         public Task task;

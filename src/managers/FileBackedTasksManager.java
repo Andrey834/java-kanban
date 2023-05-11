@@ -10,11 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileBackedTasksManager extends InMemoryTaskManager implements TaskManager {
-    private static File file;
+    private File file;
 
     public FileBackedTasksManager(File file) {
-        FileBackedTasksManager.file = file;
-        //file = new File("resources","database.csv");
+        this.file = file;
         File dir = new File(file.getParent());
         try {
             if (!dir.isDirectory()) {
@@ -28,27 +27,6 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        FileBackedTasksManager manager = new FileBackedTasksManager(new File("resources", "database.csv"));
-        loadFromFile();
-        manager.createTask(new Task("lastTask", "descLast"));
-        manager.createEpicTask(new EpicTask("epicTask", "descEpic2"));
-        manager.createSubTask(new SubTask("subTask1", "descSub", 2));
-        manager.createSubTask(new SubTask("subTask2", "descSub", 2));
-        manager.updateSubTask(new SubTask(3 ,"lastTask", "descLast", StatusTask.DONE));
-
-        manager.getTask(1);
-        manager.getTask(2);
-        manager.getTask(3);
-        manager.getTask(1);
-        manager.getTask(4);
-        manager.createSubTask(new SubTask("subTask3", "descSub", 2));
-
-        for (Task task : manager.getHistory()) {
-            System.out.println(task);
-        }
-    }
-
     private void save() {
         try (PrintWriter writer = new PrintWriter(file, StandardCharsets.UTF_8);) {
             writer.println("id,type,name,status,description,epic");
@@ -56,13 +34,13 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                 writer.println(task.toString());
             }
             writer.print("\n");
-            writer.print(historyToString(Managers.getDefaultHistory()));
+            writer.print(historyToString(Manager.getDefaultHistory()));
         } catch (IOException e) {
             throw new ManagerSaveException("Error writing to file");
         }
     }
 
-    static void loadFromFile() {
+    public void loadFromFile() {
         try {
             List<String> taskLine = Files.readAllLines(file.toPath());
             if (taskLine.size() > 1) {
@@ -97,7 +75,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager implements TaskM
                 }
                 int lineHistory = taskLine.size() - 1;
                 for (Integer integer : historyFromString(taskLine.get(lineHistory))) {
-                    Managers.getDefault().getTask(integer);
+                    Manager.getDefault().getTask(integer);
                 }
             }
         } catch (IOException exception) {
