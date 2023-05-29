@@ -1,7 +1,7 @@
-package tasks;
+package main.tasks;
 
 public enum TypeTask {
     TASK,
-    EPICTASK,
+    EPIC,
     SUBTASK;
 }
