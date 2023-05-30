@@ -66,8 +66,6 @@ public abstract class TaskManagerTest<T extends TaskManager> {
         final int actualOwnEpicFromSubtask = savedSubTask.getOwnEpic();
         final int expectedIdInIdSubListFromEpic = savedSubTask.getId();
 
-        assertNotNull(savedEpic, "Эпик-Задача не найдена");
-        assertNotNull(savedSubTask, "Суб-Задача не найдена");
 
         assertEquals(epicTask, savedEpic, "Эпик-Задачи не совпадают");
         assertEquals(subTask, savedSubTask, "Суб-Задачи не совпадают");

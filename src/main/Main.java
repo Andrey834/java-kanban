@@ -41,6 +41,6 @@ public class Main {
 
         manager.printTableTasks(manager.getListAllTasks());
 
-        manager.getValidationDate().forEach(System.out::println);
+        manager.printTableTasks(manager.getPrioritizedTasks());
     }
 }

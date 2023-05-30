@@ -16,15 +16,15 @@ public abstract class HistoryManagerTest <T extends HistoryManager> {
         Task task = new Task("simpleTaskH", "simpleTask");
         historyManager.add(task);
 
-        final List<Task> historyList = historyManager.getHistory();
+        final List<Task> actualHistoryList = historyManager.getHistory();
 
-        assertEquals(1, historyList.size(), "Задача не добавилась");
-        assertTrue(historyList.contains(task), "Задача не добавилась");
+        assertEquals(1, actualHistoryList.size(), "Задача не добавилась");
+        assertTrue(actualHistoryList.contains(task), "Задача не добавилась");
 
         historyManager.add(task);
 
-        assertEquals(1, historyList.size(), "Размер истории больше при дублировании");
-        assertTrue(historyList.contains(task), "Задача не заменилась при дублировании");
+        assertEquals(1, actualHistoryList.size(), "Размер истории больше при дублировании");
+        assertTrue(actualHistoryList.contains(task), "Задача не заменилась при дублировании");
     }
 
     @Test
@@ -37,33 +37,33 @@ public abstract class HistoryManagerTest <T extends HistoryManager> {
         historyManager.add(task2);
         historyManager.add(task3);
 
-        final List<Task> historyList = historyManager.getHistory();
+        final List<Task> actualHistoryList = historyManager.getHistory();
 
-        assertEquals(3, historyList.size());
+        assertEquals(3, actualHistoryList.size());
 
         historyManager.remove(1);
-        final List<Task> historyListAfterRemoveFirstTask = historyManager.getHistory();
+        final List<Task> actualHistoryListAfterRemoveFirstTask = historyManager.getHistory();
 
-        assertEquals(2, historyListAfterRemoveFirstTask.size());
-        assertFalse(historyListAfterRemoveFirstTask.contains(task1));
+        assertEquals(2, actualHistoryListAfterRemoveFirstTask.size());
+        assertFalse(actualHistoryListAfterRemoveFirstTask.contains(task1));
 
         historyManager.remove(3);
-        final List<Task> historyListAfterRemoveLastTask = historyManager.getHistory();
+        final List<Task> actualHistoryListAfterRemoveLastTask = historyManager.getHistory();
 
-        assertEquals(1, historyListAfterRemoveLastTask.size());
-        assertFalse(historyListAfterRemoveLastTask.contains(task3));
+        assertEquals(1, actualHistoryListAfterRemoveLastTask.size());
+        assertFalse(actualHistoryListAfterRemoveLastTask.contains(task3));
 
         historyManager.remove(2);
-        final List<Task> historyListAfterRemoveAllTask = historyManager.getHistory();
+        final List<Task> actualHistoryListAfterRemoveAllTask = historyManager.getHistory();
 
-        assertEquals(0, historyListAfterRemoveAllTask.size());
-        assertFalse(historyListAfterRemoveAllTask.contains(task2));
+        assertEquals(0, actualHistoryListAfterRemoveAllTask.size());
+        assertFalse(actualHistoryListAfterRemoveAllTask.contains(task2));
     }
 
     @Test
     public void getHistoryWhenHistoryIsEmptyTest() {
-        final List<Task> historyList = historyManager.getHistory();
-        assertEquals(0, historyList.size());
+        final List<Task> actualHistoryList = historyManager.getHistory();
+        assertEquals(0, actualHistoryList.size());
     }
 }
 

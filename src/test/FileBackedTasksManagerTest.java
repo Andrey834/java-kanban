@@ -40,15 +40,15 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
         manager.getTaskMap().remove(task2.getId());
         manager.getTaskMap().remove(task3.getId());
 
-        final List<Task> tasksListAfterRemoveTasks = manager.getListAllTasks();
+        final List<Task> actualTasksListAfterRemoveTasks = manager.getListAllTasks();
 
-        assertEquals(0, tasksListAfterRemoveTasks.size());
+        assertEquals(0, actualTasksListAfterRemoveTasks.size());
 
         manager.loadFromFile();
 
-        final List<Task> tasksListAfterLoad = manager.getListAllTasks();
+        final List<Task> actualTasksListAfterLoad = manager.getListAllTasks();
 
-        assertEquals(3, tasksListAfterLoad.size());
+        assertEquals(3, actualTasksListAfterLoad.size());
 
         Task taskLoad1 = manager.getTask(task1.getId());
         Task taskLoad2 = manager.getTask(task2.getId());
@@ -70,69 +70,69 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
         manager.addNewTask(task2);
         manager.addNewTask(task3);
 
-        final List<Task> tasksList = manager.getListAllTasks();
-        assertEquals(3, tasksList.size());
+        final List<Task> actualTasksList = manager.getListAllTasks();
+        assertEquals(3, actualTasksList.size());
 
-        final List<Task> idListHistory = manager.getHistory();
-        assertEquals(0, idListHistory.size());
+        final List<Task> actualIdListHistory = manager.getHistory();
+        assertEquals(0, actualIdListHistory.size());
 
         manager.getTask(task1.getId());
         manager.getTask(task2.getId());
         manager.getTask(task3.getId());
 
-        final List<Task> idListHistoryAfterGetTasks = manager.getHistory();
-        assertEquals(3, idListHistoryAfterGetTasks.size(), "Отличается размер истории с ожидаемым");
+        final List<Task> actualIdListHistoryAfterGetTasks = manager.getHistory();
+        assertEquals(3, actualIdListHistoryAfterGetTasks.size(), "Отличается размер истории с ожидаемым");
 
         manager.getTaskMap().remove(task1.getId());
         manager.getTaskMap().remove(task2.getId());
         manager.getTaskMap().remove(task3.getId());
         historyManager.clear();
 
-        final List<Task> tasksListAfterRemoveTasks = manager.getListAllTasks();
-        assertEquals(0, tasksListAfterRemoveTasks.size());
+        final List<Task> actualTasksListAfterRemoveTasks = manager.getListAllTasks();
+        assertEquals(0, actualTasksListAfterRemoveTasks.size());
 
-        final List<Task> idListHistoryAfterAfterClear = manager.getHistory();
-        assertEquals(0, idListHistoryAfterAfterClear.size());
+        final List<Task> actualIdListHistoryAfterAfterClear = manager.getHistory();
+        assertEquals(0, actualIdListHistoryAfterAfterClear.size());
 
         manager.loadFromFile();
 
-        final List<Task> idListHistoryAfterAfterLoad = manager.getHistory();
-        assertEquals(3, idListHistoryAfterAfterLoad.size(), "Не загрузилась история просмотра Задач");
+        final List<Task> actualIdListHistoryAfterAfterLoad = manager.getHistory();
+        assertEquals(3, actualIdListHistoryAfterAfterLoad.size(), "Не загрузилась история просмотра Задач");
     }
 
     @Test
     public void loadEmptyData() {
-        final List<Task> tasksList = manager.getListAllTasks();
-        assertEquals(0, tasksList.size(), "loadEmptyData - присутствуют задачи");
+        final List<Task> actualTasksList = manager.getListAllTasks();
+        assertEquals(0, actualTasksList.size(), "loadEmptyData - присутствуют задачи");
 
-        final List<Task> idListHistory = manager.getHistory();
-        assertEquals(0, idListHistory.size(),"loadEmptyData - присутствуют история задач");
+        final List<Task> actualIdListHistory = manager.getHistory();
+        assertEquals(0, actualIdListHistory.size(),"loadEmptyData - присутствуют история задач");
 
-        final List<Task> idListPrioritizedTasks = manager.getPrioritizedTasks();
-        assertEquals(0, idListHistory.size(),"loadEmptyData - присутствуют приоритет задачи");
+        final List<Task> actualIdListPrioritizedTasks = manager.getPrioritizedTasks();
+        assertEquals(0, actualIdListPrioritizedTasks.size(),"loadEmptyData - присутствуют приоритет задачи");
 
         manager.loadFromFile();
 
-        final List<Task> tasksListAfterLoad = manager.getListAllTasks();
-        assertEquals(0, tasksList.size(), "loadEmptyData - присутствуют задачи после пустой загрузке");
+        final List<Task> actualTasksListAfterLoad = manager.getListAllTasks();
+        assertEquals(0, actualTasksListAfterLoad.size(), "loadEmptyData - присутствуют задачи после пустой загрузке");
 
-        final List<Task> idListHistoryAfterLoad = manager.getHistory();
-        assertEquals(0, idListHistory.size(),"loadEmptyData - история задач после загрузки");
+        final List<Task> actualIdListHistoryAfterLoad = manager.getHistory();
+        assertEquals(0, actualIdListHistoryAfterLoad.size(),"loadEmptyData - история задач после загрузки");
 
-        final List<Task> idListPrioritizedTasksAfterLoad = manager.getPrioritizedTasks();
-        assertEquals(0, idListHistory.size(),"loadEmptyData - приоритет задачи не пустой");;
+        final List<Task> actualIdListPrioritizedTasksAfterLoad = manager.getPrioritizedTasks();
+        assertEquals(0, actualIdListPrioritizedTasksAfterLoad.size(),"loadEmptyData - приоритет задачи не пустой");;
 
     }
 
     @Test
     public void loadEmptyTasks() {
-        final List<Task> tasksList = manager.getListAllTasks();
-        assertEquals(0, tasksList.size(), "loadEmptyTasks - присутствуют задачи");
+        final List<Task> actualTasksList = manager.getListAllTasks();
+        assertEquals(0, actualTasksList.size(), "loadEmptyTasks - присутствуют задачи");
 
         manager.loadFromFile();
 
-        final List<Task> tasksListAfterLoad = manager.getListAllTasks();
-        assertEquals(0, tasksList.size(), "loadEmptyTasks - присутствуют задачи после пустой загрузке");
+        final List<Task> actualTasksListAfterLoad = manager.getListAllTasks();
+        assertEquals(0, actualTasksListAfterLoad.size(), "loadEmptyTasks - присутствуют задачи после пустой загрузке");
     }
 
     @Test
@@ -153,9 +153,9 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
 
         manager.loadFromFile();
 
-        Epic loadEpic = manager.getEpic(epic.getId());
+        Epic actualLoadEpic = manager.getEpic(epic.getId());
 
-        assertEquals(savedEpic, loadEpic, "loadEmptyEpic - Эпик-Задачи отличаются");
+        assertEquals(savedEpic, actualLoadEpic, "loadEmptyEpic - Эпик-Задачи отличаются");
     }
 
     @Test
@@ -169,26 +169,26 @@ public class FileBackedTasksManagerTest extends TaskManagerTest<FileBackedTasksM
         manager.addNewTask(task2);
         manager.addNewTask(task3);
 
-        final List<Task> tasksList = manager.getListAllTasks();
-        assertEquals(3, tasksList.size());
+        final List<Task> actualTasksList = manager.getListAllTasks();
+        assertEquals(3, actualTasksList.size());
 
-        final List<Task> idListHistory = manager.getHistory();
-        assertEquals(0, idListHistory.size(), "loadEmptyHistory Размер истории не пуст");
+        final List<Task> actualIdListHistory = manager.getHistory();
+        assertEquals(0, actualIdListHistory.size(), "loadEmptyHistory Размер истории не пуст");
 
         manager.getTaskMap().remove(task1.getId());
         manager.getTaskMap().remove(task2.getId());
         manager.getTaskMap().remove(task3.getId());
 
-        final List<Task> tasksListAfterRemove = manager.getListAllTasks();
-        assertEquals(0, tasksListAfterRemove.size());
+        final List<Task> actualTasksListAfterRemove = manager.getListAllTasks();
+        assertEquals(0, actualTasksListAfterRemove.size());
 
         manager.loadFromFile();
 
-        final List<Task> idListHistoryAfterLoad = manager.getHistory();
-        assertEquals(0, idListHistoryAfterLoad.size(), "loadEmptyHistory Размер истории не пуст");
+        final List<Task> actualIdListHistoryAfterLoad = manager.getHistory();
+        assertEquals(0, actualIdListHistoryAfterLoad.size(), "loadEmptyHistory Размер истории не пуст");
 
-        final List<Task> tasksListAfterLoad = manager.getListAllTasks();
-        assertEquals(3, tasksListAfterLoad.size());
+        final List<Task> actualTasksListAfterLoad = manager.getListAllTasks();
+        assertEquals(3, actualTasksListAfterLoad.size());
     }
 }
 
