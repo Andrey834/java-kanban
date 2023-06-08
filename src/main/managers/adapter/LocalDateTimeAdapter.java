@@ -32,7 +32,12 @@ private static final DateTimeFormatter formatterReader = DateTimeFormatter.ofPat
             Type type,
             JsonDeserializationContext jsonDeserializationContext
     ) throws JsonParseException {
-        return LocalDateTime.parse(jsonElement.getAsJsonObject().get("startTime").getAsString(), formatterReader);
+        return LocalDateTime.parse(jsonElement.
+                getAsJsonObject().
+                get("startTime").
+                getAsString(),
+                formatterReader
+        );
     }
 
     @Override
