@@ -22,7 +22,7 @@ public class SubAdapter implements JsonDeserializer<Subtask>, JsonSerializer<Sub
         String title = jsonObject.get("title").getAsString();
         String description = jsonObject.get("description").getAsString();
         StatusTask status = StatusTask.NEW;
-        int duration = 0;;
+        int duration = 0;
         LocalDateTime startTime = null;
         int ownEpic = 0;
 
